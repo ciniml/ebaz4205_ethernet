@@ -13,7 +13,7 @@ xelab.pb: tb.sv ../axis_to_mii.sv ../mii_to_axis.sv ../prepend_preamble.sv
 compile: xelab.pb
 
 test: xelab.pb
-	xsim tb --onfinish quit --tclbatch ./test.tcl --wdb test.wdb
-
+	xsim tb --onfinish quit --tclbatch ./test.tcl --wdb test.wdb | tee test.log
+	if grep Error test.log; then echo "Error."; exit 1; fi
 view: test.wdb
 	vivado ./test.wdb&

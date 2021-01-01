@@ -68,7 +68,7 @@ module tb;
         logic       tlast;
     } tv_axis;
 
-    localparam int NUMBER_OF_INPUTS = 100;
+    localparam int NUMBER_OF_INPUTS = 200;
     localparam int MIN_BYTES = 1;
     localparam int MAX_BYTES = 24;
 

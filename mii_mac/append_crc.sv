@@ -71,7 +71,7 @@ assign maxis_tuser  = output_tuser;
 always_comb begin
     case(state)
     S_IDLE: begin
-        input_tready <= output_tready;
+        input_tready <= 1;
     end
     S_DATA: begin
         input_tready <= !output_tvalid || output_tvalid && output_tready && !output_tlast;
@@ -83,14 +83,22 @@ end
 always_ff @(posedge clock) begin
     if( !aresetn ) begin
         state <= S_RESET;
+        output_tvalid <= 0;
+        output_tdata <= 0;
+        output_tuser <= 0;
+        output_tlast <= 0;
     end
     else begin
         case( state )
         S_RESET: begin
             state <= S_IDLE;
+            output_tvalid <= 0;
+            output_tdata <= 0;
+            output_tuser <= 0;
+            output_tlast <= 0;
         end
         S_IDLE: begin
-            if( input_tvalid && input_tready) begin
+            if( input_tvalid ) begin
                 output_tvalid <= 1;
                 output_tdata <= input_tdata;
                 output_tlast <= input_tlast;

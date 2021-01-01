@@ -24,7 +24,7 @@ logic phase = 0;
 logic prev_in_frame = 0;
 logic in_frame = 0;
 
-assign sfd_detected = prev_is_sfd_lower && mii_dv && mii_d == SFD[7:4];
+assign sfd_detected = prev_is_sfd_lower && mii_dv && mii_d == SFD[7:4] && !in_frame;
 
 always_ff @(posedge clock) begin
     if( !aresetn ) begin
