@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./test.wdb" id="1">
+         <top_modules>
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2621500fs"></ZoomStartTime>
+      <ZoomEndTime time="3898501fs"></ZoomEndTime>
+      <Cursor1Time time="3495000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="169"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="72" />
+   <wvobject type="logic" fp_name="/tb/dut/ap_clk">
+      <obj_property name="ElementShortName">ap_clk</obj_property>
+      <obj_property name="ObjectShortName">ap_clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_rst_n">
+      <obj_property name="ElementShortName">ap_rst_n</obj_property>
+      <obj_property name="ObjectShortName">ap_rst_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TDATA">
+      <obj_property name="ElementShortName">in_r_TDATA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TDATA[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/in_r_TVALID">
+      <obj_property name="ElementShortName">in_r_TVALID</obj_property>
+      <obj_property name="ObjectShortName">in_r_TVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/in_r_TREADY">
+      <obj_property name="ElementShortName">in_r_TREADY</obj_property>
+      <obj_property name="ObjectShortName">in_r_TREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TKEEP">
+      <obj_property name="ElementShortName">in_r_TKEEP[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TKEEP[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TSTRB">
+      <obj_property name="ElementShortName">in_r_TSTRB[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TSTRB[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TLAST">
+      <obj_property name="ElementShortName">in_r_TLAST[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TLAST[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TDATA">
+      <obj_property name="ElementShortName">out_r_TDATA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TDATA[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/out_r_TVALID">
+      <obj_property name="ElementShortName">out_r_TVALID</obj_property>
+      <obj_property name="ObjectShortName">out_r_TVALID</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/out_r_TREADY">
+      <obj_property name="ElementShortName">out_r_TREADY</obj_property>
+      <obj_property name="ObjectShortName">out_r_TREADY</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TKEEP">
+      <obj_property name="ElementShortName">out_r_TKEEP[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TKEEP[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TSTRB">
+      <obj_property name="ElementShortName">out_r_TSTRB[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TSTRB[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TLAST">
+      <obj_property name="ElementShortName">out_r_TLAST[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TLAST[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_rst_n_inv">
+      <obj_property name="ElementShortName">ap_rst_n_inv</obj_property>
+      <obj_property name="ObjectShortName">ap_rst_n_inv</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/in_r_TDATA_blk_n">
+      <obj_property name="ElementShortName">in_r_TDATA_blk_n</obj_property>
+      <obj_property name="ObjectShortName">in_r_TDATA_blk_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_CS_fsm">
+      <obj_property name="ElementShortName">ap_CS_fsm[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_CS_fsm_state2">
+      <obj_property name="ElementShortName">ap_CS_fsm_state2</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm_state2</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_CS_fsm_state5">
+      <obj_property name="ElementShortName">ap_CS_fsm_state5</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm_state5</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_CS_fsm_state8">
+      <obj_property name="ElementShortName">ap_CS_fsm_state8</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm_state8</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/header_value_source_M_elems_address0">
+      <obj_property name="ElementShortName">header_value_source_M_elems_address0[2:0]</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_address0[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/header_value_source_M_elems_ce0">
+      <obj_property name="ElementShortName">header_value_source_M_elems_ce0</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_ce0</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/header_value_source_M_elems_we0">
+      <obj_property name="ElementShortName">header_value_source_M_elems_we0</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_we0</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/header_value_source_M_elems_q0">
+      <obj_property name="ElementShortName">header_value_source_M_elems_q0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_q0[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/header_value_source_M_elems_ce1">
+      <obj_property name="ElementShortName">header_value_source_M_elems_ce1</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_ce1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/header_value_source_M_elems_we1">
+      <obj_property name="ElementShortName">header_value_source_M_elems_we1</obj_property>
+      <obj_property name="ObjectShortName">header_value_source_M_elems_we1</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_CS_fsm_state4">
+      <obj_property name="ElementShortName">ap_CS_fsm_state4</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm_state4</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_CS_fsm_state7">
+      <obj_property name="ElementShortName">ap_CS_fsm_state7</obj_property>
+      <obj_property name="ObjectShortName">ap_CS_fsm_state7</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_NS_fsm">
+      <obj_property name="ElementShortName">ap_NS_fsm[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_NS_fsm[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_data_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_out_V_data_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_data_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_data_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_in_V_data_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_data_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TDATA_int_regslice">
+      <obj_property name="ElementShortName">in_r_TDATA_int_regslice[7:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TDATA_int_regslice[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/in_r_TVALID_int_regslice">
+      <obj_property name="ElementShortName">in_r_TVALID_int_regslice</obj_property>
+      <obj_property name="ObjectShortName">in_r_TVALID_int_regslice</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/in_r_TREADY_int_regslice">
+      <obj_property name="ElementShortName">in_r_TREADY_int_regslice</obj_property>
+      <obj_property name="ObjectShortName">in_r_TREADY_int_regslice</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_data_V_U_ack_in">
+      <obj_property name="ElementShortName">regslice_both_in_V_data_V_U_ack_in</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_data_V_U_ack_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_keep_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_in_V_keep_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_keep_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TKEEP_int_regslice">
+      <obj_property name="ElementShortName">in_r_TKEEP_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TKEEP_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_keep_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_in_V_keep_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_keep_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_keep_V_U_ack_in">
+      <obj_property name="ElementShortName">regslice_both_in_V_keep_V_U_ack_in</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_keep_V_U_ack_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_strb_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_in_V_strb_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_strb_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TSTRB_int_regslice">
+      <obj_property name="ElementShortName">in_r_TSTRB_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TSTRB_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_strb_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_in_V_strb_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_strb_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_strb_V_U_ack_in">
+      <obj_property name="ElementShortName">regslice_both_in_V_strb_V_U_ack_in</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_strb_V_U_ack_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_last_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_in_V_last_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_last_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/in_r_TLAST_int_regslice">
+      <obj_property name="ElementShortName">in_r_TLAST_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">in_r_TLAST_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_last_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_in_V_last_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_last_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_in_V_last_V_U_ack_in">
+      <obj_property name="ElementShortName">regslice_both_in_V_last_V_U_ack_in</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_in_V_last_V_U_ack_in</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TDATA_int_regslice">
+      <obj_property name="ElementShortName">out_r_TDATA_int_regslice[7:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TDATA_int_regslice[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/out_r_TVALID_int_regslice">
+      <obj_property name="ElementShortName">out_r_TVALID_int_regslice</obj_property>
+      <obj_property name="ObjectShortName">out_r_TVALID_int_regslice</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/out_r_TREADY_int_regslice">
+      <obj_property name="ElementShortName">out_r_TREADY_int_regslice</obj_property>
+      <obj_property name="ObjectShortName">out_r_TREADY_int_regslice</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_data_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_out_V_data_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_data_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_keep_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_out_V_keep_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_keep_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TKEEP_int_regslice">
+      <obj_property name="ElementShortName">out_r_TKEEP_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TKEEP_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_keep_V_U_ack_in_dummy">
+      <obj_property name="ElementShortName">regslice_both_out_V_keep_V_U_ack_in_dummy</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_keep_V_U_ack_in_dummy</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_keep_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_out_V_keep_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_keep_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_strb_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_out_V_strb_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_strb_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TSTRB_int_regslice">
+      <obj_property name="ElementShortName">out_r_TSTRB_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TSTRB_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_strb_V_U_ack_in_dummy">
+      <obj_property name="ElementShortName">regslice_both_out_V_strb_V_U_ack_in_dummy</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_strb_V_U_ack_in_dummy</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_strb_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_out_V_strb_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_strb_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_last_V_U_apdone_blk">
+      <obj_property name="ElementShortName">regslice_both_out_V_last_V_U_apdone_blk</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_last_V_U_apdone_blk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/out_r_TLAST_int_regslice">
+      <obj_property name="ElementShortName">out_r_TLAST_int_regslice[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out_r_TLAST_int_regslice[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_last_V_U_ack_in_dummy">
+      <obj_property name="ElementShortName">regslice_both_out_V_last_V_U_ack_in_dummy</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_last_V_U_ack_in_dummy</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/regslice_both_out_V_last_V_U_vld_out">
+      <obj_property name="ElementShortName">regslice_both_out_V_last_V_U_vld_out</obj_property>
+      <obj_property name="ObjectShortName">regslice_both_out_V_last_V_U_vld_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/dut/ap_ce_reg">
+      <obj_property name="ElementShortName">ap_ce_reg</obj_property>
+      <obj_property name="ObjectShortName">ap_ce_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state1">
+      <obj_property name="ElementShortName">ap_ST_fsm_state1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state1[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state2">
+      <obj_property name="ElementShortName">ap_ST_fsm_state2[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state2[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state3">
+      <obj_property name="ElementShortName">ap_ST_fsm_state3[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state3[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state4">
+      <obj_property name="ElementShortName">ap_ST_fsm_state4[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state4[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state5">
+      <obj_property name="ElementShortName">ap_ST_fsm_state5[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state5[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state6">
+      <obj_property name="ElementShortName">ap_ST_fsm_state6[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state6[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state7">
+      <obj_property name="ElementShortName">ap_ST_fsm_state7[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state7[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/dut/ap_ST_fsm_state8">
+      <obj_property name="ElementShortName">ap_ST_fsm_state8[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ap_ST_fsm_state8[7:0]</obj_property>
+   </wvobject>
+</wave_config>

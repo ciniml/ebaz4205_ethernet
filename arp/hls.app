@@ -1,12 +1,13 @@
-<project xmlns="com.autoesl.autopilot.project" top="ethernet_service" name="arp">
+<project xmlns="com.autoesl.autopilot.project" name="arp" top="ethernet_service">
     <includePaths/>
     <libraryPaths/>
     <Simulation>
-        <SimFlow askAgain="false" name="csim" csimMode="0" lastCsimMode="0"/>
+        <SimFlow askAgain="false" name="csim" csimMode="0" lastCsimMode="2"/>
     </Simulation>
     <files xmlns="">
         <file name="../test.cpp" sc="0" tb="1" cflags=" -Wno-unknown-pragmas" csimflags=" -Wno-unknown-pragmas" blackbox="false"/>
         <file name="arp/arp.cpp" sc="0" tb="false" cflags="-I/usr/include/x86_64-linux-gnu" csimflags="" blackbox="false"/>
+        <file name="arp/arp.hpp" sc="0" tb="false" cflags="" csimflags="" blackbox="false"/>
     </files>
     <solutions xmlns="">
         <solution name="solution1" status="active"/>
