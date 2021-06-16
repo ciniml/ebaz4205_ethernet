@@ -10,7 +10,7 @@ set core_revision 1
 set rtl_dir ../../rtl
 
 create_project $project_name.xpr -in_memory
-set device_part "xcku115-flva1517-2-e"
+set device_part "xc7z010clg400-1"
 set_property part $device_part [current_project]
 
 # Add target files
@@ -37,6 +37,7 @@ lappend source_files {../util/simple_fifo.v}
 lappend source_files {crc_mac.sv}
 lappend source_files {append_crc.sv}
 lappend source_files {remove_crc.sv}
+lappend source_files {axis_mux.sv}
 lappend source_files {mii_mac_tx.sv}
 lappend source_files {mii_mac_rx.sv}
 lappend source_files {mii_mac.sv}
@@ -92,7 +93,7 @@ set_property CORE_REVISION $core_revision $ipcore
 
 ### Add clock interfaces
 ## master
-add_clock_if tx_clock slave 25000000 {tx_xgmii:tx_saxis}
+add_clock_if tx_clock slave 25000000 {tx_xgmii:tx_saxis:tx_saxis_bypass}
 add_clock_if rx_clock slave 25000000 {rx_xgmii:rx_maxis}
 
 ### Add reset interfaces
@@ -100,33 +101,6 @@ add_clock_if rx_clock slave 25000000 {rx_xgmii:rx_maxis}
 add_reset_if tx_reset slave ACTIVE_HIGH
 # rx_reset
 add_reset_if rx_reset slave ACTIVE_HIGH
-
-### Add MII interface
-# set bus_if [ipx::add_bus_interface tx_mii [ipx::current_core]]
-# set_property abstraction_type_vlnv xilinx.com:display_xxv_ethernet:user_int_ports:2.0 $bus_if
-# set_property bus_type_vlnv xilinx.com:interface:mii_rtl:1.0 $bus_if
-# set_property interface_mode master $bus_if
-# ipx::add_port_map tx_mii_d $bus_if
-# set_property physical_name tx_xgmii_d [ipx::get_port_maps tx_mii_d -of_objects $bus_if]
-# ipx::add_port_map tx_mii_c $bus_if
-# set_property physical_name tx_xgmii_c [ipx::get_port_maps tx_mii_c -of_objects $bus_if]
-
-# set bus_if [ipx::add_bus_interface rx_xgmii [ipx::current_core]]
-# set_property abstraction_type_vlnv xilinx.com:display_xxv_ethernet:user_int_ports:2.0 $bus_if
-# set_property bus_type_vlnv xilinx.com:display_xxv_ethernet:user_ports_int:2.0 $bus_if
-# set_property interface_mode slave $bus_if
-# ipx::add_port_map rx_mii_d $bus_if
-# set_property physical_name rx_xgmii_d [ipx::get_port_maps rx_mii_d -of_objects $bus_if]
-# ipx::add_port_map rx_mii_c $bus_if
-# set_property physical_name rx_xgmii_c [ipx::get_port_maps rx_mii_c -of_objects $bus_if]
-
-### Associate XGMII interface to clock
-#set bus_if [ipx::get_bus_interfaces tx_clock -of_objects [ipx::current_core]]
-#set_property VALUE {tx_xgmii tx_saxis} [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects $bus_if]
-#set_property VALUE {tx_reset} [ipx::get_bus_parameters ASSOCIATED_RESET -of_objects $bus_if]
-#set bus_if [ipx::get_bus_interfaces rx_clock -of_objects [ipx::current_core]]
-#set_property VALUE {rx_xgmii rx_maxis} [ipx::get_bus_parameters ASSOCIATED_BUSIF -of_objects $bus_if]
-#set_property VALUE {rx_reset} [ipx::get_bus_parameters ASSOCIATED_RESET -of_objects $bus_if]
 
 # Generate other files and save IP core.
 ipx::create_xgui_files $ipcore

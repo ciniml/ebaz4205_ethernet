@@ -7,15 +7,24 @@ module mii_mac_tx #(
     input wire clock,
     input wire aresetn,
     
+    // MII output
     output reg [3:0] mii_d,
     output reg       mii_en,
     output reg       mii_er,
 
+    // Ethernet payload input
     input  wire [7:0] saxis_tdata,
-    input  wire        saxis_tvalid,
-    output wire        saxis_tready,
-    input  wire        saxis_tuser,
-    input  wire        saxis_tlast
+    input  wire       saxis_tvalid,
+    output wire       saxis_tready,
+    input  wire       saxis_tuser,
+    input  wire       saxis_tlast,
+
+    // Ethernet bypass input (without prepending preamble and appending FCS)
+    input  wire [7:0] saxis_bypass_tdata,
+    input  wire       saxis_bypass_tvalid,
+    output wire       saxis_bypass_tready,
+    input  wire       saxis_bypass_tuser,
+    input  wire       saxis_bypass_tlast
 );
 
 logic [7:0] append_crc_out_tdata;
@@ -64,14 +73,43 @@ prepend_preamble #(
     .maxis_tlast(prepend_preamble_out_tlast)
 );
 
+logic [7:0] mux_out_tdata;
+logic       mux_out_tvalid;
+logic       mux_out_tready;
+logic       mux_out_tuser;
+logic       mux_out_tlast;
+
+axis_mux axis_mux_inst (
+    .clock(clock),
+    .aresetn(aresetn),
+
+    .saxis_0_tdata(prepend_preamble_out_tdata),
+    .saxis_0_tvalid(prepend_preamble_out_tvalid),
+    .saxis_0_tready(prepend_preamble_out_tready),
+    .saxis_0_tuser(prepend_preamble_out_tuser),
+    .saxis_0_tlast(prepend_preamble_out_tlast),
+
+    .saxis_1_tdata(saxis_bypass_tdata),
+    .saxis_1_tvalid(saxis_bypass_tvalid),
+    .saxis_1_tready(saxis_bypass_tready),
+    .saxis_1_tuser(saxis_bypass_tuser),
+    .saxis_1_tlast(saxis_bypass_tlast),
+
+    .maxis_tdata(mux_out_tdata),
+    .maxis_tvalid(mux_out_tvalid),
+    .maxis_tready(mux_out_tready),
+    .maxis_tuser(mux_out_tuser),
+    .maxis_tlast(mux_out_tlast)
+);
+
 axis_to_mii axis_to_mii_inst (
     .clock(clock),
     .aresetn(aresetn),
 
-    .saxis_tdata(prepend_preamble_out_tdata),
-    .saxis_tvalid(prepend_preamble_out_tvalid),
-    .saxis_tready(prepend_preamble_out_tready),
-    .saxis_tlast(prepend_preamble_out_tlast),
+    .saxis_tdata(mux_out_tdata),
+    .saxis_tvalid(mux_out_tvalid),
+    .saxis_tready(mux_out_tready),
+    .saxis_tlast(mux_out_tlast),
 
     .mii_d(mii_d),
     .mii_en(mii_en),

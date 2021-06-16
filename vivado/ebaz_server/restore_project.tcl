@@ -19,3 +19,5 @@ update_ip_catalog
 
 source ./design_1.tcl
 make_wrapper -top -fileset sources_1 -import [get_files $project_name.srcs/sources_1/bd/design_1/design_1.bd]
+
+add_files ./constraint.xdc -fileset [get_filesets constrs_1]e

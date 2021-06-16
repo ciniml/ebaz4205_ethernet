@@ -13,6 +13,12 @@ module mii_mac (
     output wire       tx_saxis_tready,
     input  wire       tx_saxis_tlast,
 
+    // Ethernet bypass input
+    input  wire [7:0] tx_saxis_bypass_tdata,
+    input  wire       tx_saxis_bypass_tvalid,
+    output wire       tx_saxis_bypass_tready,
+    input  wire       tx_saxis_bypass_tlast,
+
     input wire rx_clock,
     input wire rx_reset,
     
@@ -35,7 +41,11 @@ mii_mac_tx mii_mac_tx_inst (
     .saxis_tdata(tx_saxis_tdata),
     .saxis_tvalid(tx_saxis_tvalid),
     .saxis_tready(tx_saxis_tready),
-    .saxis_tlast(tx_saxis_tlast));
+    .saxis_tlast(tx_saxis_tlast),
+    .saxis_bypass_tdata(tx_saxis_bypass_tdata),
+    .saxis_bypass_tvalid(tx_saxis_bypass_tvalid),
+    .saxis_bypass_tready(tx_saxis_bypass_tready),
+    .saxis_bypass_tlast(tx_saxis_bypass_tlast));
 
 mii_mac_rx mii_mac_rx_inst (
     .clock(rx_clock),
