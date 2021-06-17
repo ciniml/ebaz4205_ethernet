@@ -10,3 +10,4 @@ pre-built/linux/
 *.log
 /components/plnx_workspace
 /components/yocto
+boot.scr
