@@ -1,6 +1,6 @@
 #pragma once
-#include <gmp.h>
-#define __gmp_const const
+// #include <gmp.h>
+// #define __gmp_const const
 
 #include <ap_int.h>
 #include <ap_axi_sdata.h>

@@ -1,6 +1,6 @@
 .PHONY: all clean restore device-tree open
 
-PROJECT_NAME := xg_mac_test
+PROJECT_NAME := ebaz_server
 BD_NAME := design_1
 BITSTREAM := $(PROJECT_NAME).runs/impl_1/$(BD_NAME)_wrapper.bit
 BITSTREAM_BIN := $(BD_NAME)_wrapper.bit.bin

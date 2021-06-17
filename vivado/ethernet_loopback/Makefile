@@ -1,7 +1,7 @@
 .PHONY: all clean restore device-tree open
 
-PROJECT_NAME := xg_mac_test
-BD_NAME := design_top
+PROJECT_NAME := ethernet_loopback
+BD_NAME := design_1
 BITSTREAM := $(PROJECT_NAME).runs/impl_1/$(BD_NAME)_wrapper.bit
 BITSTREAM_BIN := $(BD_NAME)_wrapper.bit.bin
 SDK_DIR := $(PROJECT_NAME).sdk
@@ -23,8 +23,6 @@ clean:
 
 open: $(PROJECT_NAME).xpr
 	$(VIVADO) $<&
-
-implement: $(BITSTREAM) $(HARDWARE_DEF)
 
 $(PROJECT_NAME).xpr:
 	$(VIVADO) -mode batch -source restore_project.tcl -tclargs $(PROJECT_NAME)
