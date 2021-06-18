@@ -3,7 +3,7 @@
 deploy: images/linux/BOOT.BIN  images/linux/image.ub boot.scr
 	cp images/linux/BOOT.BIN $(SDCARD)/
 	cp images/linux/image.ub $(SDCARD)/
-	cp images/linux/boot.scr $(SDCARD)/
+	cp boot.scr $(SDCARD)/
 
 
 boot.scr: boot.txt

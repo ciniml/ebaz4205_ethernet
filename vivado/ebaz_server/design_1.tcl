@@ -127,6 +127,7 @@ fugafuga.org:Network:ethernet_service:1.0\
 xilinx.com:ip:axis_data_fifo:2.0\
 fugafuga.org:fugafuga.org:mii_mac:1.0\
 fugafuga.org:fugafuga.org:mii_to_axis:1.0\
+fugafuga.org:fugafuga.org:prepend_preamble:1.0\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:processing_system7:5.5\
 xilinx.com:ip:system_ila:1.1\
@@ -243,6 +244,9 @@ proc create_root_design { parentCell } {
 
   # Create instance: mii_to_axis_ps, and set properties
   set mii_to_axis_ps [ create_bd_cell -type ip -vlnv fugafuga.org:fugafuga.org:mii_to_axis:1.0 mii_to_axis_ps ]
+
+  # Create instance: prepend_preamble_ps, and set properties
+  set prepend_preamble_ps [ create_bd_cell -type ip -vlnv fugafuga.org:fugafuga.org:prepend_preamble:1.0 prepend_preamble_ps ]
 
   # Create instance: proc_sys_reset_rx, and set properties
   set proc_sys_reset_rx [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_rx ]
@@ -510,7 +514,7 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_rx, and set properties
   set system_ila_rx [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_rx ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {0.5} \
+   CONFIG.C_BRAM_CNT {6} \
    CONFIG.C_INPUT_PIPE_STAGES {2} \
    CONFIG.C_MON_TYPE {MIX} \
    CONFIG.C_NUM_MONITOR_SLOTS {1} \
@@ -524,7 +528,7 @@ proc create_root_design { parentCell } {
   # Create instance: system_ila_tx, and set properties
   set system_ila_tx [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_tx ]
   set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {1} \
+   CONFIG.C_BRAM_CNT {6} \
    CONFIG.C_INPUT_PIPE_STAGES {2} \
    CONFIG.C_MON_TYPE {MIX} \
    CONFIG.C_NUM_MONITOR_SLOTS {2} \
@@ -558,7 +562,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net arp_0_out_r [get_bd_intf_pins ethernet_service_0/out_r] [get_bd_intf_pins fifo_ethernet_tx/S_AXIS]
 connect_bd_intf_net -intf_net [get_bd_intf_nets arp_0_out_r] [get_bd_intf_pins fifo_ethernet_tx/S_AXIS] [get_bd_intf_pins system_ila_tx/SLOT_0_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets arp_0_out_r]
-  connect_bd_intf_net -intf_net fifo_ethernet_ps_tx_M_AXIS [get_bd_intf_pins fifo_ethernet_ps_tx/M_AXIS] [get_bd_intf_pins mii_mac_0/tx_saxis_bypass]
+  connect_bd_intf_net -intf_net fifo_ethernet_ps_tx_M_AXIS [get_bd_intf_pins fifo_ethernet_ps_tx/M_AXIS] [get_bd_intf_pins prepend_preamble_ps/saxis]
   connect_bd_intf_net -intf_net fifo_ethernet_rx_M_AXIS [get_bd_intf_pins ethernet_service_0/in_r] [get_bd_intf_pins fifo_ethernet_rx/M_AXIS]
 connect_bd_intf_net -intf_net [get_bd_intf_nets fifo_ethernet_rx_M_AXIS] [get_bd_intf_pins fifo_ethernet_rx/M_AXIS] [get_bd_intf_pins system_ila_tx/SLOT_1_AXIS]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_intf_nets fifo_ethernet_rx_M_AXIS]
@@ -566,6 +570,7 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets fifo_ethernet_rx_M_AXIS] [get_bd
   connect_bd_intf_net -intf_net mii_mac_0_rx_maxis [get_bd_intf_pins fifo_ethernet_rx/S_AXIS] [get_bd_intf_pins mii_mac_0/rx_maxis]
 connect_bd_intf_net -intf_net [get_bd_intf_nets mii_mac_0_rx_maxis] [get_bd_intf_pins fifo_ethernet_rx/S_AXIS] [get_bd_intf_pins system_ila_rx/SLOT_0_AXIS]
   connect_bd_intf_net -intf_net mii_to_axis_ps_maxis [get_bd_intf_pins fifo_ethernet_ps_tx/S_AXIS] [get_bd_intf_pins mii_to_axis_ps/maxis]
+  connect_bd_intf_net -intf_net prepend_preamble_0_maxis [get_bd_intf_pins mii_mac_0/tx_saxis_bypass] [get_bd_intf_pins prepend_preamble_ps/maxis]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR_0] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO_0] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_GPIO_0 [get_bd_intf_ports GPIO_0_0] [get_bd_intf_pins processing_system7_0/GPIO_0]
@@ -586,7 +591,7 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets processing_system7_0_GPIO_0] [ge
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets mii_mac_0_tx_mii_en]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins fifo_ethernet_rx/s_axis_aresetn] [get_bd_pins proc_sys_reset_rx/peripheral_aresetn] [get_bd_pins system_ila_rx/resetn]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins mii_mac_0/rx_reset] [get_bd_pins proc_sys_reset_rx/peripheral_reset]
-  connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins ethernet_service_0/ap_rst_n] [get_bd_pins fifo_ethernet_ps_tx/s_axis_aresetn] [get_bd_pins fifo_ethernet_tx/s_axis_aresetn] [get_bd_pins mii_to_axis_ps/aresetn] [get_bd_pins proc_sys_reset_tx/peripheral_aresetn] [get_bd_pins system_ila_tx/resetn]
+  connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins ethernet_service_0/ap_rst_n] [get_bd_pins fifo_ethernet_ps_tx/s_axis_aresetn] [get_bd_pins fifo_ethernet_tx/s_axis_aresetn] [get_bd_pins mii_to_axis_ps/aresetn] [get_bd_pins prepend_preamble_ps/aresetn] [get_bd_pins proc_sys_reset_tx/peripheral_aresetn] [get_bd_pins system_ila_tx/resetn]
   connect_bd_net -net proc_sys_reset_1_peripheral_reset [get_bd_pins mii_mac_0/tx_reset] [get_bd_pins proc_sys_reset_tx/peripheral_reset]
   connect_bd_net -net processing_system7_0_ENET0_GMII_TXD [get_bd_pins mii_to_axis_ps/mii_d] [get_bd_pins processing_system7_0/ENET0_GMII_TXD] [get_bd_pins system_ila_tx/probe3]
   set_property HDL_ATTRIBUTE.DEBUG {true} [get_bd_nets processing_system7_0_ENET0_GMII_TXD]
@@ -596,7 +601,7 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets processing_system7_0_GPIO_0] [ge
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk] [get_bd_pins system_ila_0/clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_50M/ext_reset_in]
   connect_bd_net -net rst_ps7_0_50M_peripheral_aresetn [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_50M/peripheral_aresetn]
-  connect_bd_net -net tri_mode_ethernet_mac_0_tx_mac_aclk [get_bd_ports ENET0_GMII_TX_CLK_0] [get_bd_pins ethernet_service_0/ap_clk] [get_bd_pins fifo_ethernet_ps_tx/s_axis_aclk] [get_bd_pins fifo_ethernet_rx/m_axis_aclk] [get_bd_pins fifo_ethernet_tx/s_axis_aclk] [get_bd_pins mii_mac_0/tx_clock] [get_bd_pins mii_to_axis_ps/clock] [get_bd_pins proc_sys_reset_tx/slowest_sync_clk] [get_bd_pins processing_system7_0/ENET0_GMII_TX_CLK] [get_bd_pins system_ila_tx/clk]
+  connect_bd_net -net tri_mode_ethernet_mac_0_tx_mac_aclk [get_bd_ports ENET0_GMII_TX_CLK_0] [get_bd_pins ethernet_service_0/ap_clk] [get_bd_pins fifo_ethernet_ps_tx/s_axis_aclk] [get_bd_pins fifo_ethernet_rx/m_axis_aclk] [get_bd_pins fifo_ethernet_tx/s_axis_aclk] [get_bd_pins mii_mac_0/tx_clock] [get_bd_pins mii_to_axis_ps/clock] [get_bd_pins prepend_preamble_ps/clock] [get_bd_pins proc_sys_reset_tx/slowest_sync_clk] [get_bd_pins processing_system7_0/ENET0_GMII_TX_CLK] [get_bd_pins system_ila_tx/clk]
   connect_bd_net -net vio_0_probe_out0 [get_bd_pins proc_sys_reset_rx/ext_reset_in] [get_bd_pins proc_sys_reset_tx/ext_reset_in] [get_bd_pins vio_ethernet_reset/probe_out0]
   connect_bd_net -net xlconstant_config_dout [get_bd_pins ethernet_service_0/config_r] [get_bd_pins xlconstant_config/dout]
 

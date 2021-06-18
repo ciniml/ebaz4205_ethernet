@@ -13,7 +13,7 @@ set_property PART $part [current_project]
 
 lappend ip_repo_path_list [file normalize ../../mii_mac]
 lappend ip_repo_path_list [file normalize ../../mii_axis]
-lappend ip_repo_path_list [file normalize ../../arp]
+lappend ip_repo_path_list [file normalize ../../ethernet_service]
 set_property ip_repo_paths $ip_repo_path_list [get_filesets sources_1]
 update_ip_catalog
 
