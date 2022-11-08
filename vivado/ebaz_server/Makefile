@@ -31,7 +31,7 @@ $(BITSTREAM) $(HARDWARE_DEF): $(PROJECT_NAME).xpr $(SRCS) $(PROJECT_NAME).srcs/s
 	$(VIVADO) -mode batch -source implement.tcl -tclargs $(PROJECT_NAME) $(BD_NAME)
 
 ../../ethernet_service/ip/ethernet_service.zip:
-	cd ../../ethernet_service; vivado_hls build.tcl
+	cd ../../ethernet_service; vitis_hls build.tcl
 
 ../../mii_mac/component.xml:
 	cd ../../mii_mac; make

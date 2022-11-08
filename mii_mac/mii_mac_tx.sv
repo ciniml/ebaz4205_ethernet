@@ -2,7 +2,8 @@
 
 module mii_mac_tx #(
     parameter PREAMBLE_CHARACTER = 8'h55,
-    parameter SFD_CHARACTER = 8'hd5
+    parameter SFD_CHARACTER = 8'hd5,
+    parameter bit USE_RMII = 0
 ) (
     input wire clock,
     input wire aresetn,
@@ -102,19 +103,37 @@ axis_mux axis_mux_inst (
     .maxis_tlast(mux_out_tlast)
 );
 
-axis_to_mii axis_to_mii_inst (
-    .clock(clock),
-    .aresetn(aresetn),
+if( USE_RMII ) begin :use_rmii_block
+    axis_to_rmii axis_to_rmii_inst (
+        .clock(clock),
+        .aresetn(aresetn),
 
-    .saxis_tdata(mux_out_tdata),
-    .saxis_tvalid(mux_out_tvalid),
-    .saxis_tready(mux_out_tready),
-    .saxis_tlast(mux_out_tlast),
+        .saxis_tdata(mux_out_tdata),
+        .saxis_tvalid(mux_out_tvalid),
+        .saxis_tready(mux_out_tready),
+        .saxis_tlast(mux_out_tlast),
 
-    .mii_d(mii_d),
-    .mii_en(mii_en),
-    .mii_er(mii_er)
-);
+        .rmii_d(mii_d[1:0]),
+        .rmii_en(mii_en)
+    );
+    assign mii_d[3:2] = 0;
+    assign mii_er = 0;
+end
+else begin :use_mii_block
+    axis_to_mii axis_to_mii_inst (
+        .clock(clock),
+        .aresetn(aresetn),
+
+        .saxis_tdata(mux_out_tdata),
+        .saxis_tvalid(mux_out_tvalid),
+        .saxis_tready(mux_out_tready),
+        .saxis_tlast(mux_out_tlast),
+
+        .mii_d(mii_d),
+        .mii_en(mii_en),
+        .mii_er(mii_er)
+    );
+end
 
 endmodule
 

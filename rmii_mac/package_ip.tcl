@@ -1,8 +1,8 @@
-set project_name mii_mac
+set project_name rmii_mac
 set vendor_name fugafuga.org
 set library_name fugafuga.org
 set taxonomy /Network
-set display_name "100M Ethernet MII MAC"
+set display_name "100M Ethernet RMII MAC"
 set supported_families "*"
 set core_version 1.0
 set core_revision 1
@@ -30,17 +30,17 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 # Define source file list
 
 set source_files {}
-lappend source_files {../mii_axis/axis_to_mii.sv}
+lappend source_files {../mii_axis/axis_to_rmii.sv}
 lappend source_files {../mii_axis/prepend_preamble.sv}
-lappend source_files {../mii_axis/mii_to_axis.sv}
+lappend source_files {../mii_axis/rmii_to_axis.sv}
 lappend source_files {../util/simple_fifo.v}
-lappend source_files {crc_mac.sv}
-lappend source_files {append_crc.sv}
-lappend source_files {remove_crc.sv}
-lappend source_files {axis_mux.sv}
-lappend source_files {mii_mac_tx.sv}
-lappend source_files {mii_mac_rx.sv}
-lappend source_files {mii_mac.sv}
+lappend source_files {../mii_mac/crc_mac.sv}
+lappend source_files {../mii_mac/append_crc.sv}
+lappend source_files {../mii_mac/remove_crc.sv}
+lappend source_files {../mii_mac/axis_mux.sv}
+lappend source_files {../mii_mac/mii_mac_tx.sv}
+lappend source_files {../mii_mac/mii_mac_rx.sv}
+lappend source_files {rmii_mac.sv}
 
 set constraint_files {}
 
@@ -93,8 +93,8 @@ set_property CORE_REVISION $core_revision $ipcore
 
 ### Add clock interfaces
 ## master
-add_clock_if tx_clock slave 25000000 {tx_xgmii:tx_saxis:tx_saxis_bypass}
-add_clock_if rx_clock slave 25000000 {rx_xgmii:rx_maxis}
+add_clock_if tx_clock slave 50000000 {tx_xgmii:tx_saxis:tx_saxis_bypass}
+add_clock_if rx_clock slave 50000000 {rx_xgmii:rx_maxis}
 
 ### Add reset interfaces
 # tx_reset

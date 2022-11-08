@@ -1,6 +1,8 @@
 `default_nettype none
 
-module mii_mac_rx (
+module mii_mac_rx #(
+    parameter USE_RMII = 0
+)(
     input wire clock,
     input wire aresetn,
     
@@ -20,20 +22,35 @@ logic       mii_to_axis_out_tready;
 logic       mii_to_axis_out_tuser;
 logic       mii_to_axis_out_tlast;
 
-mii_to_axis mii_to_axis_inst (
-    .clock(clock),
-    .aresetn(aresetn),
+if( USE_RMII ) begin :use_rmii_block 
+    rmii_to_axis rmii_to_axis_inst (
+        .clock(clock),
+        .aresetn(aresetn),
 
-    .mii_d(mii_d),
-    .mii_dv(mii_dv),
-    .mii_er(mii_er),
+        .rmii_d(mii_d[1:0]),
+        .rmii_dv(mii_dv),
 
-    .maxis_tdata (mii_to_axis_out_tdata),
-    .maxis_tvalid(mii_to_axis_out_tvalid),
-    .maxis_tuser (mii_to_axis_out_tuser),
-    .maxis_tlast (mii_to_axis_out_tlast)
-);
+        .maxis_tdata (mii_to_axis_out_tdata),
+        .maxis_tvalid(mii_to_axis_out_tvalid),
+        .maxis_tuser (mii_to_axis_out_tuser),
+        .maxis_tlast (mii_to_axis_out_tlast)
+    );
+end
+else begin :use_mii_block
+    mii_to_axis mii_to_axis_inst (
+        .clock(clock),
+        .aresetn(aresetn),
 
+        .mii_d(mii_d),
+        .mii_dv(mii_dv),
+        .mii_er(mii_er),
+
+        .maxis_tdata (mii_to_axis_out_tdata),
+        .maxis_tvalid(mii_to_axis_out_tvalid),
+        .maxis_tuser (mii_to_axis_out_tuser),
+        .maxis_tlast (mii_to_axis_out_tlast)
+    );
+end
 
 typedef struct packed {
     bit [7:0] tdata;

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./test.wdb" id="1">
+         <top_modules>
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="4,880.001 ns"></ZoomEndTime>
+      <Cursor1Time time="732.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="264"></NameColumnWidth>
+      <ValueColumnWidth column_width="92"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wvobject type="logic" fp_name="/tb/clock">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/aresetn">
+      <obj_property name="ElementShortName">aresetn</obj_property>
+      <obj_property name="ObjectShortName">aresetn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/axis_to_rmii_rmii_d">
+      <obj_property name="ElementShortName">axis_to_rmii_rmii_d[1:0]</obj_property>
+      <obj_property name="ObjectShortName">axis_to_rmii_rmii_d[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/axis_to_rmii_rmii_en">
+      <obj_property name="ElementShortName">axis_to_rmii_rmii_en</obj_property>
+      <obj_property name="ObjectShortName">axis_to_rmii_rmii_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/axis_to_rmii_rmii_er">
+      <obj_property name="ElementShortName">axis_to_rmii_rmii_er</obj_property>
+      <obj_property name="ObjectShortName">axis_to_rmii_rmii_er</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/rmii_to_axis_rmii_d">
+      <obj_property name="ElementShortName">rmii_to_axis_rmii_d[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rmii_to_axis_rmii_d[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/rmii_to_axis_rmii_dv">
+      <obj_property name="ElementShortName">rmii_to_axis_rmii_dv</obj_property>
+      <obj_property name="ObjectShortName">rmii_to_axis_rmii_dv</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/rmii_to_axis_rmii_er">
+      <obj_property name="ElementShortName">rmii_to_axis_rmii_er</obj_property>
+      <obj_property name="ObjectShortName">rmii_to_axis_rmii_er</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/saxis_tdata">
+      <obj_property name="ElementShortName">saxis_tdata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">saxis_tdata[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/saxis_tvalid">
+      <obj_property name="ElementShortName">saxis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">saxis_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/saxis_tready">
+      <obj_property name="ElementShortName">saxis_tready</obj_property>
+      <obj_property name="ObjectShortName">saxis_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/saxis_tlast">
+      <obj_property name="ElementShortName">saxis_tlast</obj_property>
+      <obj_property name="ObjectShortName">saxis_tlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/preamble_axis_tdata">
+      <obj_property name="ElementShortName">preamble_axis_tdata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">preamble_axis_tdata[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/preamble_axis_tvalid">
+      <obj_property name="ElementShortName">preamble_axis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">preamble_axis_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/preamble_axis_tready">
+      <obj_property name="ElementShortName">preamble_axis_tready</obj_property>
+      <obj_property name="ObjectShortName">preamble_axis_tready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/preamble_axis_tlast">
+      <obj_property name="ElementShortName">preamble_axis_tlast</obj_property>
+      <obj_property name="ObjectShortName">preamble_axis_tlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/maxis_tdata">
+      <obj_property name="ElementShortName">maxis_tdata[7:0]</obj_property>
+      <obj_property name="ObjectShortName">maxis_tdata[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/maxis_tvalid">
+      <obj_property name="ElementShortName">maxis_tvalid</obj_property>
+      <obj_property name="ObjectShortName">maxis_tvalid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/maxis_tuser">
+      <obj_property name="ElementShortName">maxis_tuser</obj_property>
+      <obj_property name="ObjectShortName">maxis_tuser</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb/maxis_tlast">
+      <obj_property name="ElementShortName">maxis_tlast</obj_property>
+      <obj_property name="ObjectShortName">maxis_tlast</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/NUMBER_OF_INPUTS">
+      <obj_property name="ElementShortName">NUMBER_OF_INPUTS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NUMBER_OF_INPUTS[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/MIN_BYTES">
+      <obj_property name="ElementShortName">MIN_BYTES[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MIN_BYTES[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb/MAX_BYTES">
+      <obj_property name="ElementShortName">MAX_BYTES[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MAX_BYTES[31:0]</obj_property>
+   </wvobject>
+</wave_config>
