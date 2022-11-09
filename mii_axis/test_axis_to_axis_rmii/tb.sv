@@ -6,10 +6,8 @@ module tb;
 
     logic [1:0] axis_to_rmii_rmii_d;
     logic       axis_to_rmii_rmii_en;
-    logic       axis_to_rmii_rmii_er;
     logic [1:0] rmii_to_axis_rmii_d;
     logic       rmii_to_axis_rmii_dv;
-    logic       rmii_to_axis_rmii_er;
     
     logic  [7:0] saxis_tdata;
     logic        saxis_tvalid;
@@ -36,7 +34,6 @@ module tb;
     axis_to_rmii dut_axis_to_rmii(
         .rmii_d (axis_to_rmii_rmii_d),
         .rmii_en(axis_to_rmii_rmii_en),
-        .rmii_er(axis_to_rmii_rmii_er),
         .saxis_tvalid(preamble_axis_tvalid),
         .saxis_tready(preamble_axis_tready),
         .saxis_tdata (preamble_axis_tdata ),
@@ -47,13 +44,26 @@ module tb;
     rmii_to_axis dut_rmii_to_axis(
         .rmii_d (rmii_to_axis_rmii_d),
         .rmii_dv(rmii_to_axis_rmii_dv),
-        .rmii_er(rmii_to_axis_rmii_er),
         .*
     );
 
-    assign rmii_to_axis_rmii_d  = axis_to_rmii_rmii_d;
-    assign rmii_to_axis_rmii_dv = axis_to_rmii_rmii_en;
-    assign rmii_to_axis_rmii_er = axis_to_rmii_rmii_er;
+    // Inject toggling CRS_DV at the last 6 cycles of a frame.
+    logic [9:0] rmii_d_buf  = 0;
+    logic [5:0] rmii_dv_buf = 0;
+    logic       rmii_dv     = 0;
+    always_ff @(posedge clock) begin
+        rmii_dv <= axis_to_rmii_rmii_en;
+        if( rmii_dv && !axis_to_rmii_rmii_en ) begin
+            rmii_dv_buf <= { axis_to_rmii_rmii_en, rmii_dv_buf[5:1] } & 6'b010101;
+        end
+        else begin
+            rmii_dv_buf <= { axis_to_rmii_rmii_en, rmii_dv_buf[5:1] };
+        end
+        rmii_d_buf  <= { axis_to_rmii_rmii_d, rmii_d_buf[9:2] };
+    end
+
+    assign rmii_to_axis_rmii_d  = rmii_d_buf[1:0];
+    assign rmii_to_axis_rmii_dv = rmii_dv_buf[0] & !(rmii_dv && !axis_to_rmii_rmii_en);
 
     initial begin
         clock = 0;
@@ -69,7 +79,7 @@ module tb;
     } tv_axis;
 
     localparam int NUMBER_OF_INPUTS = 200;
-    localparam int MIN_BYTES = 1;
+    localparam int MIN_BYTES = 2;
     localparam int MAX_BYTES = 24;
 
     initial begin

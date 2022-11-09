@@ -4,7 +4,7 @@ module rmii_to_axis (
     input wire clock,
     input wire aresetn,
     
-    input wire [2:0] rmii_d,
+    input wire [1:0] rmii_d,
     input wire       rmii_dv,
 
     output logic  [7:0]  maxis_tdata,
@@ -17,13 +17,16 @@ localparam SFD = 8'hd5;
 
 logic sfd_detected;
 
-logic [2:0] phase = 0;
+logic [1:0] phase = 0;
 
 logic prev_in_frame = 0;
 logic in_frame = 0;
 
 logic [2:0] dv_buf_3;   // DV input buffer for 3 cycles.
 logic [5:0] d_buf_3;    // D  input buffer for 3 cycles.
+
+logic  [7:0]  maxis_tdata_next = 0;
+logic         maxis_tvalid_next = 0;
 
 always_ff @(posedge clock) begin
     if( !aresetn ) begin
@@ -56,7 +59,7 @@ always_ff @(posedge clock) begin
         prev_in_frame <= in_frame;
         phase <= (sfd_detected || phase == 2'd3) ? 0 : phase + 1;
         in_frame <=   sfd_detected ? 1
-                    : !rmii_dv ? 0
+                    : dv_4[3:2] == 2'b00 ? 0
                     : in_frame;
     end
 end
@@ -67,17 +70,25 @@ always_ff @(posedge clock) begin
         maxis_tvalid <= 0;
         maxis_tlast <= 0;
         maxis_tuser <= 0;
+        maxis_tdata_next <= 0;
+        maxis_tvalid_next <= 0;
     end
     else begin
         maxis_tvalid <= 0;
         
         // Update maxis_tdata
-        if( dv_4 == 4'b1111 && in_frame && phase == 2'd3 ) begin
-            maxis_tdata <= d_4; // Hold data
+        if( dv_4[2] && dv_4[0] && in_frame && phase == 2'd3 ) begin
+            maxis_tdata_next <= d_4; // Hold data
         end
         if( prev_in_frame && in_frame && phase == 2'd0 ) begin
-            maxis_tvalid <= 1;
-            maxis_tlast <= !rmii_dv;    // DV signal is deasserted. 
+            maxis_tvalid_next <= 1;
+        end
+        // Delay update the output to detect end of frame.
+        if( maxis_tvalid_next && phase == 2'd3 ) begin
+            maxis_tdata <= maxis_tdata_next;
+            maxis_tvalid <= maxis_tvalid_next;
+            maxis_tlast <= !in_frame;
+            maxis_tvalid_next <= 0;
         end
     end
 end
